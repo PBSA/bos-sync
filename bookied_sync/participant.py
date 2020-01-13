@@ -26,6 +26,8 @@ class LookupParticipants(Lookup, dict):
             participants (self)
         """
         parties = self.get("participants")
+        if type(parties) == type(None):
+            return True  #Warning: Check if it's okay to return True
         for team in parties:
             if name.lower() in [
                 x.lower() for x in team.get("name", {}).values()
